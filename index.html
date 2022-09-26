@@ -4,10 +4,98 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="css/styls.css" />
-    <title>Document</title>
+    <title>Generador Contraseña</title>
   </head>
+
   <body>
-    <script scr="js/script.js"></script>
+    <div class="contenedorGeneral">
+
+      <h1 class="titulo">Generador de contraseña</h1>
+
+      <section class="contenedorDatos" id="contenedorDatos">
+          <div class="contenedorCopiar">
+            <span id="copiarContraseña">Contraseña</span>
+            <div class="ctnCopiarResetear">
+              <button id="botonCopiar">
+                <i class="fa-solid fa-copy"></i>
+              </button>
+              
+              <button id="botonReseteo">
+                <i class="fa-solid fa-retweet"></i>
+              </button>
+            </div>
+          </div>
+      <section>
+     
+      <div class="ctndatos"> 
+        <div class="contenedorCaracteres">
+          <h4 class="titleSecundario">Cantidad de caracteres</h4>
+          <label for="inputCaracteres" class="logitud-caracteres" ></label
+          >
+          <input
+            type="number"
+            id="inputCaracteres"
+            class="formCaracteres"
+            min="4" 
+            max="12"
+            value="4"
+          />
+        </div>
+
+          <div class="contenedorCheck">
+             <h3>Elija los caracteres</h3>
+
+              <div class="checked">
+                <label class="formNumeros" for="checkNumeros">¿Incluir números?</label>
+                <input class="checkbox" type="checkbox" id="checkNumeros"/>
+              </div>
+
+              <div class="checked">
+                <label class="formSimbolos" for="checkSimbolos">¿Incluir simbolos?</label>
+                <input class="checkbox" type="checkbox" id="checkSimbolos"/>
+              </div>
+
+              <div class="checked">
+                <label class="formMayusculas" for="checkMayusculas">¿Incluir mayusculas?</label>
+                <input class="checkbox"type="checkbox"id="checkMayusculas"/>
+              </div>
+
+              <div class="checked">
+                <label class="forMinusculas" for="checkMinusculas">
+                ¿Incluir minusculas?</label>
+                <input class="checkbox"type="checkbox"id="checkMinusculas"/>
+              </div>
+          </div>
+
+          <div class="btnRadio">
+           <h3>Reglas para la contraseña</h3>
+
+           <div class="radio">
+            <div class="botonRadio">
+              <label class="radioLabel" for="radioUno"> Solo Letras</label>
+              <input class="radioInput"id="rdLetras"name="radioBtn"type="radio"value="facilDecir"/>
+            </div>
+
+            <div class="botonRadio">
+              <label class="radioLabel" for="radioDos">Solo números</label>
+              <input  class="radioinput"id="rdNumero"name="radioBtn"type="radio"value="fácilLeer"/>
+            </div>
+
+            <div class="botonRadio">
+              <label class="radioLabel" for="radioTres">Todos los caracteres</label>
+             <input class="radioInput"id="rdtodosLosCaracteres" name="radioBtn"type="radio"value="caracteres"/>
+            </div>
+          </div>
+      </div> 
+    </div>
+    <script src="js/script.js"></script>
   </body>
 </html>
