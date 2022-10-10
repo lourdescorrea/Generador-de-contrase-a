@@ -12,90 +12,145 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="css/styls.css" />
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
     <title>Generador Contraseña</title>
   </head>
-
   <body>
-    <div class="contenedorGeneral">
+    <section class="main" id="main">
+      <div class="tarjeta-principal flex-center-col">
+        <div class="flex-center-col">
+          <div class="flex-center-col tarjeta-principal-titulos">
+            <h1>Generador contraseña <i class="fa-solid fa-lock"></i></h1>
 
-      <h1 class="titulo">Generador de contraseña</h1>
+            <h3>
+              Utilice nuestro generador de contraseñas en línea para crear de
+              forma inmediata su clave
+            </h3>
+          </div>
 
-      <section class="contenedorDatos" id="contenedorDatos">
-          <div class="contenedorCopiar">
-            <span id="copiarContraseña">Contraseña</span>
-            <div class="ctnCopiarResetear">
-              <button id="botonCopiar">
+          <div class="tarjeta-principal-contraseña">
+            <div class="contenedor-contraseña">
+              <h3 class="contraseña" id="contraseña">Contraseña</h3>
+              <button
+                id="btnResetear"
+                class="boton-resetear"
+                aria-label="resetea Contraseña"
+              >
+                <i
+                  id="resetear"
+                  class="fa-solid fa-arrows-rotate active-rotate"
+                  aria-hidden="true"
+                ></i>
+              </button>
+            </div>
+            <div class="contenedor-botones">
+              <button id="btnGenerar" class="boton">Generar</button>
+
+              <button id="btnCopiar" class="boton">
+                Copiar
                 <i class="fa-solid fa-copy"></i>
               </button>
-              
-              <button id="botonReseteo">
-                <i class="fa-solid fa-retweet"></i>
-              </button>
             </div>
           </div>
-      <section>
-     
-      <div class="ctndatos"> 
-        <div class="contenedorCaracteres">
-          <h4 class="titleSecundario">Cantidad de caracteres</h4>
-          <label for="inputCaracteres" class="logitud-caracteres" ></label
-          >
-          <input
-            type="number"
-            id="inputCaracteres"
-            class="formCaracteres"
-            min="4" 
-            max="12"
-            value="4"
-          />
         </div>
 
-          <div class="contenedorCheck">
-             <h3>Elija los caracteres</h3>
+        <div class="tarjeta-secundaria">
+          <h2>Personalice su contraseña</h2>
 
-              <div class="checked">
-                <label class="formNumeros" for="checkNumeros">¿Incluir números?</label>
-                <input class="checkbox" type="checkbox" id="checkNumeros"/>
-              </div>
-
-              <div class="checked">
-                <label class="formSimbolos" for="checkSimbolos">¿Incluir simbolos?</label>
-                <input class="checkbox" type="checkbox" id="checkSimbolos"/>
-              </div>
-
-              <div class="checked">
-                <label class="formMayusculas" for="checkMayusculas">¿Incluir mayusculas?</label>
-                <input class="checkbox"type="checkbox"id="checkMayusculas"/>
-              </div>
-
-              <div class="checked">
-                <label class="forMinusculas" for="checkMinusculas">
-                ¿Incluir minusculas?</label>
-                <input class="checkbox"type="checkbox"id="checkMinusculas"/>
-              </div>
+          <div class="flex-center-col">
+            <div class="flex-center">
+              <h4 class="titulo-secundario">Cantidad de caracteres</h4>
+              <input
+                type="text"
+                id="caracteres"
+                class="input-caracteres"
+                value="4"
+              />
+            </div>
+            <input
+              type="range"
+              id="inputCaracteres"
+              name="input"
+              min="1"
+              max="20"
+              value="4"
+            />
           </div>
 
-          <div class="btnRadio">
-           <h3>Reglas para la contraseña</h3>
+          <div class="contenedor-reglas">
+            <div class="contenedor-botones-radio">
+              <h4 class="titulo-secundario">Reglas para la contraseña</h4>
 
-           <div class="radio">
-            <div class="botonRadio">
-              <label class="radioLabel" for="radioUno"> Solo Letras</label>
-              <input class="radioInput"id="rdLetras"name="radioBtn"type="radio"value="facilDecir"/>
+              <div class="contenedor-boton-radio">
+                <label for="rdLibre"> Libre</label>
+                <input
+                  id="rdLibre"
+                  name="radioBtn"
+                  type="radio"
+                  value="libre"
+                  checked
+                />
+              </div>
+
+              <div class="contenedor-boton-radio">
+                <label for="rdLetras"> Solo Letras</label>
+                <input
+                  id="rdLetras"
+                  name="radioBtn"
+                  type="radio"
+                  value="letras"
+                />
+              </div>
+
+              <div class="contenedor-boton-radio">
+                <label for="rdNumero">Solo números</label>
+                <input
+                  id="rdNumero"
+                  name="radioBtn"
+                  type="radio"
+                  value="numeros"
+                />
+              </div>
+
+              <div class="contenedor-boton-radio">
+                <label for="rdtodosLosCaracteres">Todos los caracteres</label>
+                <input
+                  id="rdtodosLosCaracteres"
+                  name="radioBtn"
+                  type="radio"
+                  value="caracteres"
+                />
+              </div>
             </div>
 
-            <div class="botonRadio">
-              <label class="radioLabel" for="radioDos">Solo números</label>
-              <input  class="radioinput"id="rdNumero"name="radioBtn"type="radio"value="fácilLeer"/>
-            </div>
+            <div class="contenedor-checkboxes">
+              <h4 class="titulo-secundario">Elija los caracteres</h4>
 
-            <div class="botonRadio">
-              <label class="radioLabel" for="radioTres">Todos los caracteres</label>
-             <input class="radioInput"id="rdtodosLosCaracteres" name="radioBtn"type="radio"value="caracteres"/>
+              <div class="contenedor-checkbox">
+                <label for="checkNumeros">¿Incluir números?</label>
+                <input type="checkbox" id="checkNumeros" checked />
+              </div>
+
+              <div class="contenedor-checkbox">
+                <label for="checkSimbolos">¿Incluir simbolos?</label>
+                <input type="checkbox" id="checkSimbolos" checked />
+              </div>
+
+              <div class="contenedor-checkbox">
+                <label for="checkMayusculas">¿Incluir mayusculas?</label>
+                <input type="checkbox" id="checkMayusculas" checked />
+              </div>
+
+              <div class="contenedor-checkbox">
+                <label for="checkMinusculas">¿Incluir minusculas?</label>
+                <input type="checkbox" id="checkMinusculas" checked />
+              </div>
             </div>
           </div>
-      </div> 
-    </div>
+        </div>
+      </div>
+    </section>
+
     <script src="js/script.js"></script>
   </body>
 </html>

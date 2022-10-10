@@ -1,86 +1,138 @@
-const minusculas = "abcdefghijklmnopkrstuvwxyz";
+// Constantes
 const numeros = "123456789";
 const simbolos = "$^&!#%";
 const mayusculas = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const minusculas = "abcdefghijklmnopkrstuvwxyz";
 
-const $ = (selector) => document.querySelector(selector);
-const $$ = (selector) => document.querySelectorAll(selector);
+// Utiles
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => document.querySelectorAll(s);
 
-//* selectores checked */
-const $checkNumeros = $("#checkNumeros");
-const $checkMinusculas = $("#checkMinusculas ");
-const $checkMayusculas = $("#checkMayusculas");
-const $checkSimbolos = $("#checkSimbolos");
+// Selectores checks
+const checkNums = $("#checkNumeros");
+const checkMayus = $("#checkMayusculas");
+const checkSimbolos = $("#checkSimbolos");
+const checkMin = $("#checkMinusculas");
 
-//* selectores radio btn */
-const $rdNumero = $("#rdNumero");
-const $rdLetras = $("#rdLetras");
-const $rdtodosLosCaracteres = $("#rdtodosLosCaracteres");
+// Selectores radio btn
+const rdNums = $("#rdNumero");
+const rdLibre = $("#rdLibre");
+const rdLetras = $("#rdLetras");
+const rdTodos = $("#rdtodosLosCaracteres");
 
-//* selectores contraseña  */
-const $botonCopiar = $("#botonCopiar");
-const $botonReseteo = $("#botonReseteo");
-const $inputCaracteres = $("#inputCaracteres");
-const $inputContraseña = $("#inputContraseña");
-const $copiarContraseña = $("#copiarContraseña");
+// Selectores btn
+const btnCopiar = $("#btnCopiar");
+const btnGenerar = $("#btnGenerar");
+const btnResetear = $("#btnResetear");
 
-const generadorPosibleContraseña = () => {
-  let largoRequerido = parseInt($("#inputCaracteres").value);
+// Selectores longitud y text
+const inputLong = $("#inputCaracteres");
+const txtContraseña = $("#contraseña");
 
-  let contraseña = "";
+// Radio Buttons Eventos y Funciones
+const deshabilitarChecks = (disabled) => {
+  checkNums.disabled = disabled;
+  checkMayus.disabled = disabled;
+  checkSimbolos.disabled = disabled;
+  checkMin.disabled = disabled;
+};
+
+const setMin = (checked) => (checkMin.checked = checked);
+const setNums = (checked) => (checkNums.checked = checked);
+const setMayus = (checked) => (checkMayus.checked = checked);
+const setSimbolos = (checked) => (checkSimbolos.checked = checked);
+
+const soloNumeros = () => {
+  setMayus(false);
+  setNums(true);
+  setSimbolos(false);
+  setMin(false);
+
+  deshabilitarChecks(true);
+};
+
+const soloLetras = () => {
+  setMayus(true);
+  setNums(false);
+  setSimbolos(false);
+  setMin(true);
+
+  deshabilitarChecks(true);
+};
+
+const libre = () => {
+  setMayus(true);
+  setNums(true);
+  setSimbolos(true);
+  setMin(true);
+
+  deshabilitarChecks(false);
+};
+
+const todos = () => {
+  setMayus(true);
+  setNums(true);
+  setSimbolos(true);
+  setMin(true);
+
+  deshabilitarChecks(true);
+};
+
+rdLibre.addEventListener("click", libre);
+rdTodos.addEventListener("click", todos);
+rdNums.addEventListener("click", soloNumeros);
+rdLetras.addEventListener("click", soloLetras);
+
+// Eventos y Funciones de Botones
+const numRandom = (limite) => Math.floor(Math.random() * limite);
+
+const generar = () => {
+  const tieneMin = checkMin.checked;
+  const tieneNums = checkNums.checked;
+  const tieneMayus = checkMayus.checked;
+  const tieneSim = checkSimbolos.checked;
+
+  if (!tieneMayus && !tieneNums && !tieneSim && !tieneMin) {
+    return alert("Debes seleccionar algún caracter");
+  }
+
+  const contraseña = [];
+  const largoRequerido = parseInt(inputLong.value);
 
   while (largoRequerido > contraseña.length) {
-    if (largoRequerido > contraseña.length && $checkMayusculas.checked) {
-      const num = Math.floor(Math.random() * mayusculas.length);
-      contraseña += mayusculas[num];
+    if (largoRequerido > contraseña.length && tieneMin) {
+      const num = numRandom(minusculas.length);
+      contraseña.push(minusculas[num]);
     }
 
-    if (largoRequerido > contraseña.length && $checkMinusculas.checked) {
-      const num = Math.floor(Math.random() * minusculas.length);
-      contraseña += minusculas[num];
+    if (largoRequerido > contraseña.length && tieneNums) {
+      const num = numRandom(numeros.length);
+      contraseña.push(numeros[num]);
     }
 
-    if (largoRequerido > contraseña.length && $checkSimbolos.checked) {
-      const num = Math.floor(Math.random() * simbolos.length);
-      contraseña += simbolos[num];
+    if (largoRequerido > contraseña.length && tieneMayus) {
+      const num = numRandom(mayusculas.length);
+      contraseña.push(mayusculas[num]);
     }
 
-    if (largoRequerido > contraseña.length && $checkNumeros.checked) {
-      const num = Math.floor(Math.random() * numeros.length);
-      contraseña += numeros[num];
-    }
-
-    if (largoRequerido > contraseña.length && $rdLetras.checked) {
-      const num = Math.floor(Math.random() * minusculas.length);
-      const num1 = Math.floor(Math.random() * mayusculas.length);
-      contraseña += minusculas[num] + mayusculas[num1];
-    }
-    if (largoRequerido > contraseña.length && $rdNumero.checked) {
-      const num = Math.floor(Math.random() * numeros.length);
-      contraseña += numeros[num];
-    }
-
-    if (largoRequerido > contraseña.length && $rdtodosLosCaracteres.checked) {
-      const num = Math.floor(Math.random() * minusculas.length);
-      const num1 = Math.floor(Math.random() * mayusculas.length);
-      const num2 = Math.floor(Math.random() * numeros.length);
-      const num3 = Math.floor(Math.random() * simbolos.length);
-      contraseña +=
-        minusculas[num] + mayusculas[num1] + numeros[num2] + simbolos[num3];
+    if (largoRequerido > contraseña.length && tieneSim) {
+      const num = numRandom(simbolos.length);
+      contraseña.push(simbolos[num]);
     }
   }
-  $copiarContraseña.innerText = contraseña;
+
+  txtContraseña.innerText = contraseña.join("");
 };
 
-//*eventos*//
+const copiarTexto = () => {
+  const texto = txtContraseña.innerText;
+  navigator.clipboard.writeText(texto);
+};
 
-$botonCopiar.addEventListener("click", () => {
-  let textToCopy = $copiarContraseña.innerText;
-  navigator.clipboard.writeText(textToCopy);
+btnGenerar.addEventListener("click", generar);
+btnResetear.addEventListener("click", generar);
+btnCopiar.addEventListener("click", copiarTexto);
+
+inputLong.addEventListener("change", () => {
+  $("#caracteres").value = inputLong.value;
 });
-
-const generadorContraseña = () => {
-  $botonReseteo.addEventListener("click", generadorPosibleContraseña);
-};
-
-generadorContraseña();
