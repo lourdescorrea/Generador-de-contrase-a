@@ -6,4 +6,4 @@ métodos de array, while, la estructura condicional de if y selectores de dom pa
 
 Espero que les guste!!
 
-![Poster Img](D:\Lu\ada\proyectodosAda\img\generadorContraseña.png)
+![Poster Img](img\generadorContraseña.png)
