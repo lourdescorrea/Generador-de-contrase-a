@@ -6,4 +6,4 @@ métodos de array, while, la estructura condicional de if y selectores de dom pa
 
 Espero que les guste!!
 
-![Poster Img](img\generadorContraseña.png)
+![Poster Img](https://github.com/lourdescorrea/Generador-de-contrase-a/blob/master/img/generadorContrase%C3%B1a.png)
