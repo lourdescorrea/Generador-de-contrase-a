@@ -16,7 +16,6 @@ const checkMin = $("#checkMinusculas");
 
 // Selectores radio btn
 const rdNums = $("#rdNumero");
-const rdLibre = $("#rdLibre");
 const rdLetras = $("#rdLetras");
 const rdTodos = $("#rdtodosLosCaracteres");
 
@@ -41,7 +40,7 @@ const setMin = (checked) => (checkMin.checked = checked);
 const setNums = (checked) => (checkNums.checked = checked);
 const setMayus = (checked) => (checkMayus.checked = checked);
 const setSimbolos = (checked) => (checkSimbolos.checked = checked);
-
+//  No se pueden sacar los parentesis ya que le estoy asignando algo, no estoy retornando ningun valor
 const soloNumeros = () => {
   setMayus(false);
   setNums(true);
@@ -60,7 +59,7 @@ const soloLetras = () => {
   deshabilitarChecks(true);
 };
 
-const libre = () => {
+const todos = () => {
   setMayus(true);
   setNums(true);
   setSimbolos(true);
@@ -69,16 +68,6 @@ const libre = () => {
   deshabilitarChecks(false);
 };
 
-const todos = () => {
-  setMayus(true);
-  setNums(true);
-  setSimbolos(true);
-  setMin(true);
-
-  deshabilitarChecks(true);
-};
-
-rdLibre.addEventListener("click", libre);
 rdTodos.addEventListener("click", todos);
 rdNums.addEventListener("click", soloNumeros);
 rdLetras.addEventListener("click", soloLetras);
