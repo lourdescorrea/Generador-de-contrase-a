@@ -16,11 +16,11 @@
     <title>Generador Contraseña</title>
   </head>
   <body>
-    <section class="main" id="main">
+    <section class="principal" id="principal">
       <div class="tarjeta-principal flex-center-col">
         <div class="flex-center-col">
           <div class="flex-center-col tarjeta-principal-titulos">
-            <h1>Generador contraseña <i class="fa-solid fa-lock"></i></h1>
+            <h1>Generador de contraseña <i class="fa-solid fa-lock"></i></h1>
 
             <h3>
               Utilice nuestro generador de contraseñas en línea para crear de
@@ -71,7 +71,7 @@
               type="range"
               id="inputCaracteres"
               name="input"
-              min="1"
+              min="4"
               max="20"
               value="4"
             />
@@ -80,17 +80,6 @@
           <div class="contenedor-reglas">
             <div class="contenedor-botones-radio">
               <h4 class="titulo-secundario">Reglas para la contraseña</h4>
-
-              <div class="contenedor-boton-radio">
-                <label for="rdLibre"> Libre</label>
-                <input
-                  id="rdLibre"
-                  name="radioBtn"
-                  type="radio"
-                  value="libre"
-                  checked
-                />
-              </div>
 
               <div class="contenedor-boton-radio">
                 <label for="rdLetras"> Solo Letras</label>
@@ -119,6 +108,7 @@
                   name="radioBtn"
                   type="radio"
                   value="caracteres"
+                  checked
                 />
               </div>
             </div>

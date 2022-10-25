@@ -16,7 +16,6 @@ const checkMin = $("#checkMinusculas");
 
 // Selectores radio btn
 const rdNums = $("#rdNumero");
-const rdLibre = $("#rdLibre");
 const rdLetras = $("#rdLetras");
 const rdTodos = $("#rdtodosLosCaracteres");
 
@@ -30,6 +29,7 @@ const inputLong = $("#inputCaracteres");
 const txtContraseña = $("#contraseña");
 
 // Radio Buttons Eventos y Funciones
+
 const deshabilitarChecks = (disabled) => {
   checkNums.disabled = disabled;
   checkMayus.disabled = disabled;
@@ -42,6 +42,7 @@ const setNums = (checked) => (checkNums.checked = checked);
 const setMayus = (checked) => (checkMayus.checked = checked);
 const setSimbolos = (checked) => (checkSimbolos.checked = checked);
 
+//  No se pueden sacar los parentesis ya que le estoy asignando algo, no estoy retornando ningun valor
 const soloNumeros = () => {
   setMayus(false);
   setNums(true);
@@ -60,7 +61,7 @@ const soloLetras = () => {
   deshabilitarChecks(true);
 };
 
-const libre = () => {
+const todos = () => {
   setMayus(true);
   setNums(true);
   setSimbolos(true);
@@ -69,16 +70,6 @@ const libre = () => {
   deshabilitarChecks(false);
 };
 
-const todos = () => {
-  setMayus(true);
-  setNums(true);
-  setSimbolos(true);
-  setMin(true);
-
-  deshabilitarChecks(true);
-};
-
-rdLibre.addEventListener("click", libre);
 rdTodos.addEventListener("click", todos);
 rdNums.addEventListener("click", soloNumeros);
 rdLetras.addEventListener("click", soloLetras);
@@ -110,14 +101,13 @@ const generar = () => {
       contraseña.push(numeros[num]);
     }
 
-    if (largoRequerido > contraseña.length && tieneMayus) {
-      const num = numRandom(mayusculas.length);
-      contraseña.push(mayusculas[num]);
-    }
-
     if (largoRequerido > contraseña.length && tieneSim) {
       const num = numRandom(simbolos.length);
       contraseña.push(simbolos[num]);
+    }
+    if (largoRequerido > contraseña.length && tieneMayus) {
+      const num = numRandom(mayusculas.length);
+      contraseña.push(mayusculas[num]);
     }
   }
 
