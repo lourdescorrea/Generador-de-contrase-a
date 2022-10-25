@@ -29,6 +29,7 @@ const inputLong = $("#inputCaracteres");
 const txtContraseña = $("#contraseña");
 
 // Radio Buttons Eventos y Funciones
+
 const deshabilitarChecks = (disabled) => {
   checkNums.disabled = disabled;
   checkMayus.disabled = disabled;
@@ -40,6 +41,7 @@ const setMin = (checked) => (checkMin.checked = checked);
 const setNums = (checked) => (checkNums.checked = checked);
 const setMayus = (checked) => (checkMayus.checked = checked);
 const setSimbolos = (checked) => (checkSimbolos.checked = checked);
+
 //  No se pueden sacar los parentesis ya que le estoy asignando algo, no estoy retornando ningun valor
 const soloNumeros = () => {
   setMayus(false);
@@ -99,14 +101,13 @@ const generar = () => {
       contraseña.push(numeros[num]);
     }
 
-    if (largoRequerido > contraseña.length && tieneMayus) {
-      const num = numRandom(mayusculas.length);
-      contraseña.push(mayusculas[num]);
-    }
-
     if (largoRequerido > contraseña.length && tieneSim) {
       const num = numRandom(simbolos.length);
       contraseña.push(simbolos[num]);
+    }
+    if (largoRequerido > contraseña.length && tieneMayus) {
+      const num = numRandom(mayusculas.length);
+      contraseña.push(mayusculas[num]);
     }
   }
 
